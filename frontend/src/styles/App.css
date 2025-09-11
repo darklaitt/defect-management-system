@@ -1,0 +1,154 @@
+.App {
+  font-family: sans-serif;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
+/* Базовые стили для форм и списков */
+input, button {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+body {
+  background: #fff;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+  color: #111;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #111;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #2D9CDB;
+}
+
+button, .button {
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 32px;
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.login_button {
+  margin-right: 20px;
+}
+
+button:hover, .button:hover {
+  background: #2D9CDB;
+  color: #fff;
+}
+
+input, select, textarea {
+  border: 1px solid #E0E0E0;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 1rem;
+  background: #fff;
+  margin-bottom: 10px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #2D9CDB;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 64px 16px 0 16px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  margin: 48px 0 24px 0;
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 24px 0 16px 0;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #444;
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0 0 0;
+}
+
+.header-logo {
+  padding-left: 20px;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 32px;
+}
+
+.header-link {
+  font-size: 1rem;
+  color: #111;
+  padding: 8px 18px;
+  border-radius: 20px;
+  transition: background 0.2s;
+}
+
+.header-link.active, .header-link:hover {
+  background: #f3f3f3;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding: 32px 8px 0 8px;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+  .header-row {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+}

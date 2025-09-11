@@ -22,7 +22,7 @@ const DefectsPage = () => {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
+    <div className="container">
       <h2>Управление дефектами</h2>
 
       {/* Форма создания */}

@@ -21,7 +21,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
+    <div className="container">
       <h2>Вход в систему</h2>
       <form onSubmit={handleSubmit}>
         <div>
