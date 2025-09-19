@@ -68,3 +68,25 @@ exports.deleteDefect = async (req, res) => {
     res.status(500).json({ error: e.message });
   }
 };
+
+exports.addAttachment = async (req, res) => {
+  try {
+    const defect = await Defect.findByPk(req.params.id);
+    if (!defect) return res.status(404).json({ error: 'Дефект не найден.' });
+    
+    if (!req.file) {
+      return res.status(400).json({ error: 'Файл не загружен.' });
+    }
+
+    const attachment = await Attachment.create({
+      filename: req.file.filename,
+      originalName: req.file.originalname,
+      path: req.file.path,
+      defectId: defect.id
+    });
+
+    res.status(201).json(attachment);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+};
