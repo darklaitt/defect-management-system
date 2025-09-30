@@ -1,5 +1,30 @@
-.App {
-  font-family: sans-serif;
+/* Bootstrap overrides */
+.navbar {
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.nav-link {
+  font-weight: 500;
+}
+
+.card {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border: none;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-weight: 600;
+}
+
+.table {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 nav a {
@@ -11,7 +36,6 @@ nav a:hover {
   color: #007bff;
 }
 
-/* Базовые стили для форм и списков */
 input, button {
   margin: 0.5rem;
   padding: 0.5rem;
@@ -75,9 +99,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .container {
-  max-width: 900px;
   margin: 0 auto;
-  padding: 64px 16px 0 16px;
   text-align: center;
 }
 

@@ -1,10 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import { SSRProvider } from 'react-bootstrap';
 import Navigation from './components/Navigation';
 import {ProjectsPage} from './pages/Projects/ProjectsPage';
+import {ProjectDefectsPage} from './pages/Projects/ProjectDefectsPage';
 import {DefectsPage} from './pages/Defects/DefectsPage';
 import {ReportsPage} from './pages/Reports/ReportsPage';
 import {LoginPage} from './pages/Auth/LoginPage';
+import {RegisterPage} from './pages/Auth/RegisterPage';
 import './styles/App.css';
 
 function Home() {
@@ -22,16 +26,22 @@ function Home() {
 
 function App() {
   return (
-    <Router>
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/defects" element={<DefectsPage />} />
-        <Route path="/reports" element={<ReportsPage />} />
-        <Route path="/login" element={<LoginPage />} />
-      </Routes>
-    </Router>
+    <SSRProvider>
+      <AuthProvider>
+        <Router>
+          <Navigation />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/projects/:projectId/defects" element={<ProjectDefectsPage />} />
+            <Route path="/defects" element={<DefectsPage />} />
+            <Route path="/reports" element={<ReportsPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </SSRProvider>
   );
 }
 

@@ -1,25 +1,66 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import { useAuth } from '../context/AuthContext';
 import '../styles/App.css';
 
 const Navigation = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
+
   return (
-    <header>
-      <div className="header-row">
-        <div className="header-logo">Defect Manager</div>
-        <nav className="header-nav">
-          <Link to="/" className={`header-link${location.pathname === '/' ? ' active' : ''}`}>Home</Link>
-          <Link to="/projects" className={`header-link${location.pathname === '/projects' ? ' active' : ''}`}>Projects</Link>
-          <Link to="/defects" className={`header-link${location.pathname === '/defects' ? ' active' : ''}`}>Defects</Link>
-          <Link to="/reports" className={`header-link${location.pathname === '/reports' ? ' active' : ''}`}>Reports</Link>
-        </nav>
-        <div className="header-actions">
-          <span style={{fontSize: '1rem', color: '#888'}}>RU</span>
-          <Link to="/login" className="button login_button" style={{padding: '10px 24px', fontSize: '1rem'}}>Войти</Link>
-        </div>
-      </div>
-    </header>
+    <Navbar bg="light" expand="lg">
+      <Container>
+        <Navbar.Brand as={Link} to="/">Defect Manager</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to="/" active={location.pathname === '/'}>
+              Главная
+            </Nav.Link>
+            <Nav.Link as={Link} to="/projects" active={location.pathname === '/projects'}>
+              Проекты
+            </Nav.Link>
+            <Nav.Link as={Link} to="/defects" active={location.pathname === '/defects'}>
+              Дефекты
+            </Nav.Link>
+            <Nav.Link as={Link} to="/reports" active={location.pathname === '/reports'}>
+              Отчеты
+            </Nav.Link>
+          </Nav>
+          <Nav>
+            {user ? (
+              <>
+                <Navbar.Text className="me-3">
+                  {user.username}
+                </Navbar.Text>
+                <Button variant="outline-primary" onClick={handleLogout}>
+                  Выйти
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button as={Link} to="/login" variant="outline-primary" className="me-2">
+                  Войти
+                </Button>
+                <Button as={Link} to="/register" variant="primary">
+                  Регистрация
+                </Button>
+              </>
+            )}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
