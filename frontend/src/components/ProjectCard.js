@@ -9,6 +9,10 @@ const ProjectCard = ({ project }) => {
     navigate(`/projects/${project.id}/defects`);
   };
 
+  const handleViewReport = () => {
+    navigate(`/projects/${project.id}/report`);
+  };
+
   return (
     <Card className="mb-3">
       <Card.Body>
@@ -21,9 +25,14 @@ const ProjectCard = ({ project }) => {
             Этап: {project.stage}
           </small>
         </Card.Text>
-        <Button variant="primary" onClick={handleViewDefects}>
-          Просмотреть дефекты
-        </Button>
+        <div className="d-grid gap-2">
+          <Button variant="primary" onClick={handleViewDefects}>
+            📋 Дефекты
+          </Button>
+          <Button variant="info" onClick={handleViewReport}>
+            📊 Отчёт
+          </Button>
+        </div>
       </Card.Body>
     </Card>
   );

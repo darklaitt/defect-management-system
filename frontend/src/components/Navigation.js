@@ -24,9 +24,6 @@ const Navigation = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/" active={location.pathname === '/'}>
-              Главная
-            </Nav.Link>
             <Nav.Link as={Link} to="/projects" active={location.pathname === '/projects'}>
               Проекты
             </Nav.Link>
