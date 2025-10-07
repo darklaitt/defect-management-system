@@ -34,11 +34,12 @@ const Navigation = () => {
               Отчеты
             </Nav.Link>
           </Nav>
-          <Nav>
+          
+          <Nav className="align-items-center">
             {user ? (
               <>
                 <Navbar.Text className="me-3">
-                  {user.username}
+                  👤 {user.username}
                 </Navbar.Text>
                 <Button variant="outline-primary" onClick={handleLogout}>
                   Выйти

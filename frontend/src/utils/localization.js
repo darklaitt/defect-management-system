@@ -19,3 +19,25 @@ export const translatePriority = (priority) => {
   };
   return priorityMap[priority] || priority;
 };
+
+// Цвета для статусов (Bootstrap классы)
+export const getStatusColor = (status) => {
+  const colorMap = {
+    'new': 'info',           // Синий
+    'in_progress': 'warning', // Жёлтый
+    'review': 'primary',      // Голубой
+    'closed': 'success',      // Зелёный
+    'cancelled': 'secondary'  // Серый
+  };
+  return colorMap[status] || 'secondary';
+};
+
+// Цвета для приоритетов
+export const getPriorityColor = (priority) => {
+  const colorMap = {
+    'low': 'success',    // Зелёный
+    'medium': 'warning', // Жёлтый
+    'high': 'danger'     // Красный
+  };
+  return colorMap[priority] || 'secondary';
+};

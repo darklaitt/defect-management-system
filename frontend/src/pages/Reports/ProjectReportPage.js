@@ -9,7 +9,10 @@ const ProjectReportPage = () => {
   const [report, setReport] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { token } = useAuth();
+  const { token, user } = useAuth();
+
+  // Только manager может экспортировать отчёты
+  const canExportReports = user && user.role === 'manager';
 
   useEffect(() => {
     fetchReport();
@@ -76,9 +79,11 @@ const ProjectReportPage = () => {
     <Container className="mt-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2>Отчёт по проекту: {project.name}</h2>
-        <Button variant="success" onClick={handleExportCSV}>
-          📥 Экспорт в CSV
-        </Button>
+        {canExportReports && (
+          <Button variant="success" onClick={handleExportCSV}>
+            📥 Экспорт в CSV
+          </Button>
+        )}
       </div>
 
       {project.description && (

@@ -1,14 +1,31 @@
 const { Defect, Project, User, Comment, Attachment } = require('../models');
+const { Op } = require('sequelize');
 
 exports.getAllDefects = async (req, res) => {
   try {
+    const { search } = req.query;
+
+    // Построение условий для поиска
+    const whereConditions = {};
+    
+    // Поиск по названию и описанию
+    if (search) {
+      whereConditions[Op.or] = [
+        { title: { [Op.iLike]: `%${search}%` } },
+        { description: { [Op.iLike]: `%${search}%` } }
+      ];
+    }
+
     const defects = await Defect.findAll({
+      where: whereConditions,
       include: [
         { model: Project, as: 'project' },
         { model: User, as: 'assignee', attributes: ['id', 'username', 'fullName'] },
         { model: User, as: 'createdBy', attributes: ['id', 'username', 'fullName'] }
-      ]
+      ],
+      order: [['createdAt', 'DESC']]
     });
+
     res.json(defects);
   } catch (e) {
     res.status(500).json({ error: e.message });
